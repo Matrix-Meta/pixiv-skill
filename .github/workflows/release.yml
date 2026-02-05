@@ -1,0 +1,43 @@
+name: Build and Release Skill
+
+on:
+  push:
+    tags:
+      - 'v*' # 當 push 符合 v* 的 tag 時觸發 (例如 v2.0.0)
+  workflow_dispatch: # 支援手動觸發
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/checkout@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Pack skill
+        id: pack
+        run: |
+          PACKAGE_NAME=$(node -e "console.log(require('./package.json').name)")
+          PACKAGE_VERSION=$(node -e "console.log(require('./package.json').version)")
+          TARBALL="${PACKAGE_NAME}-${PACKAGE_VERSION}.tgz"
+          npm pack
+          echo "tarball=$TARBALL" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: ${{ steps.pack.outputs.tarball }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
