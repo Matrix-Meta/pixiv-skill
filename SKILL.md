@@ -93,11 +93,27 @@ node skills/pixiv/scripts/pixiv-cli.js feed [RESTRICT] [PAGE]
 To download an illustration (single image, manga/multiple, or ugoira zip):
 
 ```bash
-node skills/pixiv/scripts/pixiv-cli.js download <ILLUST_ID>
+node scripts/pixiv-cli.js download <ILLUST_ID>
 ```
 
-Files are saved to `skills/pixiv/downloads/<ILLUST_ID>/`.
+Files are saved to `downloads/<ILLUST_ID>/`.
 Returns JSON containing the list of downloaded files.
+
+### Publishing Illustrations (New)
+
+To publish a new illustration directly to Pixiv using the AppAPI v2 (pure code, no browser needed):
+
+```bash
+node scripts/pixiv-cli.js post <FILEPATH> "<TITLE>" "[TAGS_COMMA_SEPARATED]" [VISIBILITY]
+```
+
+- `VISIBILITY`: `public` (default) or `private`.
+- Automatic AI-generated tagging (`illust_ai_type: 2`) is applied by default.
+
+Example:
+```bash
+node scripts/pixiv-cli.js post "./output.png" "My New Art" "Original, Girl, AI" private
+```
 
 ## How to get a Token (for User)
 
