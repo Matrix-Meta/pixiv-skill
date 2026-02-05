@@ -67,7 +67,9 @@ async function postIllustration(filepath, title, tags, options = {}) {
   
   const visibilityMap = {
     'public': 0,
-    'private': 1
+    'login_only': 1,
+    'mypixiv': 3,
+    'private': 4
   };
   const visibilityValue = visibilityMap[options.visibility] !== undefined ? visibilityMap[options.visibility] : 0;
 

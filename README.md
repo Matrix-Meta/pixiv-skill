@@ -43,7 +43,7 @@ node scripts/pixiv-cli.js login <REFRESH_TOKEN>
 ### CLI Commands
 
 - **Post Work**: `node scripts/pixiv-cli.js post <filepath> <title> [tags] [visibility]`
-  - `visibility`: `public` (default) or `private`.
+  - `visibility`: `public` (default), `login_only`, `mypixiv`, or `private`.
 - **Search**: `node scripts/pixiv-cli.js search "keyword" [page]`
 - **Ranking**: `node scripts/pixiv-cli.js ranking [mode] [page]`
 - **User Profile**: `node scripts/pixiv-cli.js user <user_id>`

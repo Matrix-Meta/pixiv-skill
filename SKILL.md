@@ -107,7 +107,7 @@ To publish a new illustration directly to Pixiv using the AppAPI v2 (pure code, 
 node scripts/pixiv-cli.js post <FILEPATH> "<TITLE>" "[TAGS_COMMA_SEPARATED]" [VISIBILITY]
 ```
 
-- `VISIBILITY`: `public` (default) or `private`.
+- `VISIBILITY`: `public` (default), `login_only`, `mypixiv`, or `private`.
 - Automatic AI-generated tagging (`illust_ai_type: 2`) is applied by default.
 
 Example:
