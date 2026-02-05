@@ -52,13 +52,6 @@ node scripts/pixiv-cli.js login <REFRESH_TOKEN>
 - **Following**: `node scripts/pixiv-cli.js following [page]`
 - **Download**: `node scripts/pixiv-cli.js download <illust_id>`
 
-## Technical Details (AppAPI v2 Publishing)
-
-This skill implements a pure-code publishing flow derived from reverse-engineering the Pixiv Android APK (v6.170.1). It handles:
-- Dynamic `X-Client-Hash` signature generation.
-- Automated `multipart/form-data` packaging for AppAPI v2.
-- Polling for asynchronous image conversion status.
-
 ## Dependencies
 
 - `@ibaraki-douji/pixivts`: Unofficial Pixiv API client.
